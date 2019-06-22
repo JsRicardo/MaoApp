@@ -8,7 +8,8 @@
     "strictNullChecks": true,
     "removeComments": true,//移除注释
     "noEmitOnError": true,//源码未变已通过，则不生成结果
-    "lib":["esnext"] //编译环境
+    "lib":["esnext"], //编译环境
+    "esModuleInterop": true
   },
   "include": ["./src"]
 }
