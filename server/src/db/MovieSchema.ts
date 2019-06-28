@@ -3,7 +3,6 @@ import { Movie } from "../entities/Movie";
 
 interface IMovie extends Movie, Mongoose.Document { }
 
-//                                       泛型
 const movieSchema = new Mongoose.Schema<IMovie>(
   {
     name: String,
