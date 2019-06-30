@@ -20,4 +20,4 @@ const movieSchema = new Mongoose.Schema<IMovie>(
   },
 );
 
-export default Mongoose.model<IMovie>("Movie", movieSchema)
+export default Mongoose.model<IMovie>("Movie", movieSchema);

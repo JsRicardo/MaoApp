@@ -11,17 +11,17 @@ export class ResponseHelper {
    * @param res 响应体
    */
   public static sendError(err: string | string[], res: Response) {
-    let error: string
+    let error: string;
     if (Array.isArray(err)) {
-      error = err.join(';')
+      error = err.join(";");
     } else {
-      error = err
+      error = err;
     }
 
     res.send({
       error,
-      data: null
-    })
+      data: null,
+    });
   }
 
   /**
@@ -32,8 +32,8 @@ export class ResponseHelper {
   public static sendData(data: any, res: Response) {
     res.send({
       err: "",
-      data
-    })
+      data,
+    });
   }
 
   /**
@@ -43,13 +43,13 @@ export class ResponseHelper {
    */
   public static sendPageData<T>(result: ISearchResult<T>, res: Response) {
     if (result.errors.length > 0) {
-      this.sendError(result.errors, res)
-    } else { 
+      this.sendError(result.errors, res);
+    } else {
       res.send({
         err: "",
         data: result.data,
-        total: result.count
-      })
+        total: result.count,
+      });
     }
   }
 }

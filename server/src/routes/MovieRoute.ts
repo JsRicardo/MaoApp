@@ -1,33 +1,31 @@
-import Express from 'express'
-import { MovieService } from '../services/MovieService';
-import { ResponseHelper } from './ResponseHelper';
+import Express from "express";
+import { MovieService } from "../services/MovieService";
+import { ResponseHelper } from "./ResponseHelper";
 
 const router = Express.Router();
 
-//param格式的get请求
-router.get('/:id', async (req, res) => {
+// param格式的get请求
+router.get("/:id", async (req, res) => {
   try {
     const movieId = req.params.id;
     const movie = await MovieService.findById(movieId);
     ResponseHelper.sendData(movie, res);
-  }
-  catch (e) {
+  } catch (e) {
     ResponseHelper.sendData(null, res);
   }
-})
+});
 
-//query格式的get请求
-router.get('/', async (req, res) => {
+// query格式的get请求
+router.get("/", async (req, res) => {
   try {
     const result = await MovieService.find(req.query);
     ResponseHelper.sendPageData(result, res);
-  }
-  catch (e) {
+  } catch (e) {
     ResponseHelper.sendData(null, res);
   }
-})
+});
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const result = await MovieService.add(req.body);
     if (Array.isArray(result)) {
@@ -35,13 +33,12 @@ router.post('/', async (req, res) => {
     } else {
       ResponseHelper.sendData(result, res);
     }
-  }
-  catch (e) {
+  } catch (e) {
     ResponseHelper.sendError(e, res);
   }
-})
+});
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const result = await MovieService.edit(req.params.id, req.body);
     if (result.length > 0) {
@@ -49,20 +46,18 @@ router.put('/:id', async (req, res) => {
     } else {
       ResponseHelper.sendData("update success", res);
     }
-  }
-  catch (e) {
+  } catch (e) {
     ResponseHelper.sendError(e, res);
   }
-})
+});
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     await MovieService.edit(req.params.id, req.body);
     ResponseHelper.sendData("delete success", res);
-  }
-  catch (e) {
+  } catch (e) {
     ResponseHelper.sendError(e, res);
   }
-})
+});
 
-export default router
+export default router;
