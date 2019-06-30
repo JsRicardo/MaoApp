@@ -1,10 +1,11 @@
-import { IsNotEmpty, ArrayMinSize, IsInt, Max, Min, IsArray } from "class-validator";
-import { Type } from "class-transformer";
+import { IsNotEmpty, ArrayMinSize, IsInt, Max, Min, IsArray, validate } from "class-validator";
+import { Type, plainToClass } from "class-transformer";
+import { BaseModel } from "./BaseModel";
 
 // movie实体类
 // 定义电影类的验证规则
 
-export class Movie {
+export class Movie extends BaseModel {
   @IsNotEmpty({ message: "电影名称不能为空" })
   @Type(() => String)
   public name: string;
@@ -43,7 +44,10 @@ export class Movie {
   @Type(() => String)
   public description?: string;
 
-  @IsNotEmpty({ message: "电影封面图不能为空" })
   @Type(() => String)
   public poster: string;
+
+  public static transform(plainObj: object): Movie {
+    return super.baseTransform(Movie, plainObj);
+  }
 }

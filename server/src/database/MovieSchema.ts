@@ -1,7 +1,7 @@
-import Mongoose, { Schema } from "mongoose";
-import { Movie } from "../entities/Movie";
+import Mongoose from "mongoose";
+import { Movie } from "../models/Movie";
 
-interface IMovie extends Movie, Mongoose.Document { }
+export interface IMovie extends Movie, Mongoose.Document { }
 
 const movieSchema = new Mongoose.Schema<IMovie>(
   {
