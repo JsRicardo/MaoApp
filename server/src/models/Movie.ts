@@ -50,5 +50,5 @@ export class Movie extends BaseModel {
   public description?: string;
 
   @Type(() => String)
-  public poster: string;
+  public poster?: string;
 }
