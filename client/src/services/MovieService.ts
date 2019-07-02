@@ -20,7 +20,7 @@ export class MovieService {
     return data;
   }
 
-  public static async edit(id: string, movie: IMovie): Promise<IResponseData<string> | IResponseError> {
+  public static async edit(id: string, movie: Partial<IMovie>): Promise<IResponseData<string> | IResponseError> {
     const { data } = await axios.put("/api/movie/" + id, movie)
     return data
   }
@@ -35,7 +35,7 @@ export class MovieService {
     return data
   }
 
-  public static async getMovieList(condition: ISearchCondition): Promise<IResponsePageData<IMovie> | IResponseData<null>> {
+  public static async getMovieList(condition: ISearchCondition): Promise<IResponsePageData<IMovie>> {
     const { data } = await axios.get("/api/movie/", {
       params: condition
     });

@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux'
+import movie, { IMovieState } from './movie'
 
-import movie from './movie'
+export interface IRootState{
+  movie:IMovieState
+}
 
-export default combineReducers({
+export const reducer = combineReducers({
   movie
 })
