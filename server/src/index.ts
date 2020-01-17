@@ -7,7 +7,7 @@ import Express from "express";
 import MovieRoute from "./routes/MovieRoute";
 import UploadRoute from "./routes/UploadRoute";
 
-const app = Express()
+const app = Express();
 
 app.use(Express.json()); // 使用中间件解析请求消息体中的JSON参数
 

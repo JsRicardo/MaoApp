@@ -52,17 +52,17 @@ export class MovieService {
     }
     // 3 查询
     const movies = await MovieModel.find({
-      name: { $regex: new RegExp(searchCondition.key) }
+      name: { $regex: new RegExp(searchCondition.key) },
     }).skip((searchCondition.nowPage - 1) * searchCondition.pageSize).limit(searchCondition.pageSize);
 
     const count = await MovieModel.find({
-      name: { $regex: new RegExp(searchCondition.key) }
+      name: { $regex: new RegExp(searchCondition.key) },
     }).countDocuments();
 
     return {
       errors: [],
       data: movies,
       count,
-    }
+    };
   }
 }
